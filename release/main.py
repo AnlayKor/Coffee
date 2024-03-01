@@ -13,7 +13,7 @@ class DBSample(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.connection = sqlite3.connect("coffee.sqlite")
+        self.connection = sqlite3.connect("data/coffee.sqlite")
         self.pushButton.clicked.connect(self.open)
         # По умолчанию будем выводить все данные из таблицы films
         self.select_data()
