@@ -5,11 +5,14 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow, QWidget, QTableWidgetItem
 
+from main_ui_file import Ui_MainWindow
+from addEditCoffeeForm import Ui_Form
 
-class DBSample(QMainWindow):
+
+class DBSample(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)
+        self.setupUi(self)
         self.connection = sqlite3.connect("coffee.sqlite")
         self.pushButton.clicked.connect(self.open)
         # По умолчанию будем выводить все данные из таблицы films
@@ -41,10 +44,10 @@ class DBSample(QMainWindow):
         self.new_form.show()
 
 
-class AddWidget(QWidget):
+class AddWidget(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
-        uic.loadUi("addEditCoffeeForm.ui", self)
+        self.setupUi(self)
         self.con = sqlite3.connect("coffee.sqlite")
         self.pushButton.clicked.connect(self.update_result)
         self.tableWidget.itemChanged.connect(self.item_changed)
